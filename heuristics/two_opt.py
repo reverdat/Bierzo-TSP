@@ -91,7 +91,6 @@ def two_opt(
         # Try all possible 2-opt swaps
         for i in range(1, len(best_tour) - 2):
             for j in range(i + 1, len(best_tour) - 1):
-                # Calculate the change in tour length if we make this swap
                 old_distance = (
                     distance_matrix[best_tour[i - 1]][best_tour[i]]
                     + distance_matrix[best_tour[j]][best_tour[j + 1]]
@@ -102,7 +101,6 @@ def two_opt(
                 )
 
                 if new_distance < old_distance - improvement_threshold:
-                    # If the swap improves the tour, make it
                     best_tour = two_opt_swap(best_tour, i, j)
                     best_length = calculate_tour_length(best_tour, distance_matrix)
                     improvement_found = True

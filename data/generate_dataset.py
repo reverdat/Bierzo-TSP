@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
-
+import time
 
 def generate_dataset(path_to_csv: str) -> pd.DataFrame:
     """
@@ -33,6 +33,7 @@ def generate_dataset(path_to_csv: str) -> pd.DataFrame:
         r = 6371  # Radius of Earth in kilometers
         return c * r
 
+    
     df = pd.read_csv(path_to_csv)
     coordinates = df[["Latitude", "Longitude"]].values
     distances = pdist(coordinates, metric=_haversine_distance)
